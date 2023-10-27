@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://g2binjxn1sui"]
+
+[ext_resource type="Texture2D" uid="uid://cxg2annin5hvh" path="res://icon.svg" id="1_85svb"]
+[ext_resource type="Script" path="res://Player.gd" id="1_ts6c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h47v1"]
+size = Vector2(30, 34)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(431, 308)
+collision_mask = 6
+script = ExtResource("1_ts6c0")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-6.91414e-06, 6.67572e-06)
+scale = Vector2(0.25, 0.28125)
+texture = ExtResource("1_85svb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h47v1")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[node name="FloorDashCooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="FloorDashCooldownTimer" to="." method="_on_floor_dash_cooldown_timer_timeout"]
